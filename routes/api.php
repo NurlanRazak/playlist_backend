@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('Api')->group(function () {
     Route::get('performer', 'PerformerController@index');
     Route::get('genre', 'GenreController@index');
+    Route::get('year', 'YearController@index');
 });
