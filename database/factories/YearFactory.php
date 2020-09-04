@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Year::class, function (Faker $faker) {
     return [
-        'year' => $faker->year('now'),
+        'year' => $faker->year(now()),
     ];
 });

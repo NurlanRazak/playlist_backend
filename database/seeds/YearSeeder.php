@@ -11,6 +11,6 @@ class YearSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Year::class, 40);
+        factory(\App\Models\Year::class, 40)->create();
     }
 }
