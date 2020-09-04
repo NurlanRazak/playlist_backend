@@ -9,7 +9,7 @@ class Performer extends Model
     //variables
     protected $table = 'performers';
     protected $guarded = ['id'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'song'];
     public $timestamps = true;
 
 
