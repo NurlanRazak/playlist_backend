@@ -17,6 +17,12 @@ class CreatePerformersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('song');
+
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
+
+            $table->unsignedBigInteger('year_id');
+            $table->foreign('year_id')->references('id')->on('years')->onDelete('cascade');
             $table->timestamps();
         });
     }
