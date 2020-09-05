@@ -14,7 +14,7 @@ class Performer extends Model
 
     public function genre()
     {
-        return $this->belongsTo(App\Models\Genre::class, 'genre_id');
+        return $this->belongsTo(Genre::class, 'genre_id');
     }
 
     public function year()
