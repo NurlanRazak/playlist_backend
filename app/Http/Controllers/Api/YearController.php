@@ -12,7 +12,13 @@ class YearController extends Controller
     public function index(Request $request)
     {
         $per_page = $request->per_page ?? 4;
-        $years = Year::paginate($per_page);
+        $all = $per_page < 0 || $request->all;
+
+        if ($all) {
+            $years = Year::get();
+        } else {
+            $years = Year::paginate($per_page);
+        }
 
         return $years;
     }
