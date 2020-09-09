@@ -14,14 +14,12 @@ class PerformerController extends Controller
     {
         if ($request->performer) {
             $query = Performer::where('name', 'like', $request->performer);
-        }
-        if ($request->genre) {
+        } else if ($request->genre) {
             $genre = $request->genre;
             $query = Performer::whereHas('genre', function ($query) use ($genre) {
                 return $query->where('name', 'like', $genre);
             });
-        }
-        if ($request->year) {
+        } else if ($request->year) {
             $year = $request->year;
             $query = Performer::whereHas('year', function ($query) use ($year) {
                 return $query->where('year', 'like', $year);
