@@ -12,7 +12,23 @@ class PerformerController extends Controller
 
     public function index(Request $request)
     {
-        $query = Performer::orderBy('updated_at', 'desc');
+        if ($request->performer) {
+            $query = Performer::where('name', 'like', $request->performer);
+        }
+        if ($request->genre) {
+            $genre = $request->genre;
+            $query = Performer::whereHas('genre', function ($query) use ($genre) {
+                return $query->where('name', 'like', $genre);
+            });
+        }
+        if ($request->year) {
+            $year = $request->year;
+            $query = Performer::whereHas('year', function ($query) use ($year) {
+                return $query->where('year', 'like', $year);
+            });
+        } else {
+            $query = Performer::orderBy('updated_at', 'desc');
+        }
 
         $per_page = $request->per_page ?? 4;
         $per_page = $per_page > 0 ? $per_page : $query->count();
